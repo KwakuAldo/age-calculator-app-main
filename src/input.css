@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+@theme {
+    --breakpoint-xs: 23.438rem;
+
+
+    
+    --color-purple1: hsl(259, 100%, 65%);
+    --color-light-red: hsl(0, 100%, 67%);
+    
+    --color-white1: hsl(0, 0%, 100%);
+    --color-off-white: hsl(0, 0%, 94%);
+    --color-light-gray: hsl(0, 0%, 86%);
+    --color-off-black: hsl(0, 0%, 8%);
+}
