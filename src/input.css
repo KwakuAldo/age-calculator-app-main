@@ -1,6 +1,9 @@
 @import "tailwindcss";
 
+
 @theme {
+    --font-poppins: 'Poppins', sans-serif;
+
     --breakpoint-xs: 23.438rem;
 
 
@@ -11,5 +14,6 @@
     --color-white1: hsl(0, 0%, 100%);
     --color-off-white: hsl(0, 0%, 94%);
     --color-light-gray: hsl(0, 0%, 86%);
+    --color-smokey-grey: hsl(0, 1%, 44%);
     --color-off-black: hsl(0, 0%, 8%);
 }

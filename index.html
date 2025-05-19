@@ -3,12 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
-  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,700;1,400;1,800&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
   <link rel="stylesheet" href="src/output.css">
   <title>Frontend Mentor | Age calculator app</title>
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <!-- Feel free to remove these styles or customize in your own stylesheet 👍 -->
   <style>
     .attribution { font-size: 11px; text-align: center; }
     .attribution a { color: hsl(228, 45%, 44%); }
@@ -16,24 +18,41 @@
 </head>
 <body class="bg-light-gray">
 
-<main class="bg-off-white w-auto h-auto mx-auto mt-10 p-5 rounded-lg shadow-md">
+<main class="bg-off-white font-poppins w-[22rem] md:w-[44rem] h-auto mx-auto mt-10 p-5 shadow-md mb-5" style="border-radius: 1.5rem 1.5rem 8rem;">
   <form action="" class="flex md:flex-row gap-4 mb-4">
-    <div class="flex flex-col md:flex-row gap-4 mb-4">
-      <label for="day">Day</label>
-      <input type="text" id="day" placeholder="DD" class="w-full p-2 border border-gray-300 rounded-md mb-4">
+    <div class="flex flex-col gap-4 mb-4">
+      <label for="day" class="text-smokey-grey font-normal">Day</label>
+      <input type="text" id="day" placeholder="DD" class="w-full md:w-40 p-4 border border-gray-300 rounded-md mb-4 cursor-pointer">
     </div>
-    <div class="flex flex-col md:flex-row gap-4 mb-4">
-      <label for="month">Month</label>
-      <input type="text" id="month" placeholder="MM" class="w-full p-2 border border-gray-300 rounded-md mb-4">
+    <div class="flex flex-col gap-4 mb-4">
+      <label for="month" class="text-smokey-grey font-normal">Month</label>
+      <input type="text" id="month" placeholder="MM" class="w-full md:w-40 p-4 border border-gray-300 rounded-md mb-4 cursor-pointer">
     </div>
-    <div class="flex flex-col md:flex-row gap-4 mb-4">
-      <label for="year">Year</label>
-      <input type="text" id="year" placeholder="YYYY" class="w-full p-2 border border-gray-300 rounded-md mb-4">
+    <div class="flex flex-col gap-4 mb-4">
+      <label for="year" class="text-smokey-grey font-normal">Year</label>
+      <input type="text" id="year" placeholder="YYYY" class="w-full md:w-40 p-4 border border-gray-300 rounded-md mb-4 cursor-pointer">
     </div>
   </form>
-  -- years
-  -- months
-  -- days
+  <div class="relative w-full h-16 flex justify-center md:justify-end items-center">
+    <div class="absolute top-1/2 left-0 w-full h-0.5 bg-light-gray -translate-y-1/2"></div>
+    <button class="bg-purple1 rounded-full w-[5rem] h-[5rem] flex items-center justify-center z-10 btn cursor-pointer">
+      <img src="assets/images/icon-arrow.svg" class="w-[2rem]" alt="">
+    </button>
+  </div>
+  <div class="flex flex-col gap-4 mt-8 mb-10">
+    <div class="flex items-center gap-3">
+      <span class="result text-6xl italic font-bold text-purple1">--</span>
+      <p class="text-off-black italic text-5xl font-extrabold">years</p>
+    </div>
+    <div class="flex items-center gap-3">
+      <span class="result text-6xl italic font-bold text-purple1">--</span>
+      <p class="text-off-black italic text-5xl font-extrabold">months</p>
+    </div>
+    <div class="flex items-center gap-3">
+      <span class="result text-6xl italic font-bold text-purple1">--</span>
+      <p class="text-off-black italic text-5xl font-extrabold">days</p>
+    </div>
+  </div>
   
 </main>
   
@@ -41,5 +60,6 @@
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
     Coded by <a href="https://github.com/KwakuAldo" target="_blank">Aldo Efui Adabunu</a>.
   </div>
+  <script src="index.js"></script>
 </body>
 </html>
