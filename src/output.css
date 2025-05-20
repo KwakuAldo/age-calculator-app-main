@@ -13,6 +13,7 @@
     --text-5xl--line-height: 1;
     --text-6xl: 3.75rem;
     --text-6xl--line-height: 1;
+    --font-weight-light: 300;
     --font-weight-normal: 400;
     --font-weight-bold: 700;
     --font-weight-extrabold: 800;
@@ -21,6 +22,7 @@
     --default-mono-font-family: var(--font-mono);
     --font-poppins: 'Poppins', sans-serif;
     --color-purple1: hsl(259, 100%, 65%);
+    --color-light-red: hsl(0, 100%, 67%);
     --color-off-white: hsl(0, 0%, 94%);
     --color-light-gray: hsl(0, 0%, 86%);
     --color-smokey-grey: hsl(0, 1%, 44%);
@@ -182,6 +184,9 @@
   .static {
     position: static;
   }
+  .top-1 {
+    top: calc(var(--spacing) * 1);
+  }
   .top-1\/2 {
     top: calc(1/2 * 100%);
   }
@@ -218,6 +223,9 @@
   .table {
     display: table;
   }
+  .h-0 {
+    height: calc(var(--spacing) * 0);
+  }
   .h-0\.5 {
     height: calc(var(--spacing) * 0.5);
   }
@@ -242,12 +250,22 @@
   .w-full {
     width: 100%;
   }
+  .border-collapse {
+    border-collapse: collapse;
+  }
+  .-translate-y-1 {
+    --tw-translate-y: calc(var(--spacing) * -1);
+    translate: var(--tw-translate-x) var(--tw-translate-y);
+  }
   .-translate-y-1\/2 {
     --tw-translate-y: calc(calc(1/2 * 100%) * -1);
     translate: var(--tw-translate-x) var(--tw-translate-y);
   }
   .cursor-pointer {
     cursor: pointer;
+  }
+  .resize {
+    resize: both;
   }
   .flex-col {
     flex-direction: column;
@@ -276,6 +294,12 @@
   }
   .border-gray-300 {
     border-color: var(--color-gray-300);
+  }
+  .border-light-red {
+    border-color: var(--color-light-red);
+  }
+  .border-smokey-grey {
+    border-color: var(--color-smokey-grey);
   }
   .bg-light-gray {
     background-color: var(--color-light-gray);
@@ -314,9 +338,16 @@
     --tw-font-weight: var(--font-weight-extrabold);
     font-weight: var(--font-weight-extrabold);
   }
+  .font-light {
+    --tw-font-weight: var(--font-weight-light);
+    font-weight: var(--font-weight-light);
+  }
   .font-normal {
     --tw-font-weight: var(--font-weight-normal);
     font-weight: var(--font-weight-normal);
+  }
+  .text-light-red {
+    color: var(--color-light-red);
   }
   .text-off-black {
     color: var(--color-off-black);
@@ -329,6 +360,9 @@
   }
   .italic {
     font-style: italic;
+  }
+  .underline {
+    text-decoration-line: underline;
   }
   .shadow-md {
     --tw-shadow: 0 4px 6px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 2px 4px -2px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
