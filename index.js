@@ -25,21 +25,23 @@ document.querySelector(".btn").addEventListener("click", function () {
     const yearError = document.getElementById("error-year");
 
     // label text color change on error
-    const labelText = document.querySelectorAll(".label-text")
-    function labelColorChangeWithError(labels, removeClass, addClass) {
-        labels.forEach((label) => {
-            label.classList.remove(removeClass);
-            label.classList.add(addClass);
-        });
+    function labelColorChangeWithError(inputId, removeClass, addClass) {
+        const label = document.querySelector(`label[for="${inputId}"]`);
+        if (!label)
+            return;
+
+        label.classList.remove(removeClass);
+        label.classList.add(addClass);
     }
 
     // input element color change to alert error
-    const inputEl = document.querySelectorAll(".inputEl")
-    function inputElementColorChangeWithError(inputs, removeClass, addClass) {
-        inputs.forEach((inputs) => {
-            inputs.classList.remove(removeClass)
-            inputs.classList.add(addClass)
-        });
+    function inputElementColorChangeWithError(inputId, removeClass, addClass) {
+        const input = document.querySelector(`#${inputId}`);
+        if (!input)
+            return;
+
+        input.classList.remove(removeClass);
+        input.classList.add(addClass);
     }
 
     // CLear previous error messages
@@ -53,36 +55,45 @@ document.querySelector(".btn").addEventListener("click", function () {
     // check if the input fields are empty
     if (!dayInput.value) {
         dayError.textContent = "This field is required";
-        labelColorChangeWithError(labelText, "text-smokey-grey", "text-light-red");
-        inputElementColorChangeWithError(inputEl, "border-smokey-grey", "border-light-red");
+        labelColorChangeWithError("day", "text-smokey-grey", "text-light-red");
+        inputElementColorChangeWithError("day", "border-smokey-grey", "border-light-red");
         hasError = true;
     }
 
     if (!monthInput.value) {
         monthError.textContent = "This field is required";
-        labelColorChangeWithError(labelText, "text-smokey-grey", "text-light-red");
-        inputElementColorChangeWithError(inputEl, "border-smokey-grey", "border-light-red");
+        labelColorChangeWithError("month", "text-smokey-grey", "text-light-red");
+        inputElementColorChangeWithError("month", "border-smokey-grey", "border-light-red");
         hasError = true;
     }
     if (!yearInput.value) {
         yearError.textContent = "This field is required";
-        labelColorChangeWithError(labelText, "text-smokey-grey", "text-light-red");
-        inputElementColorChangeWithError(inputEl, "border-smokey-grey", "border-light-red");
+        labelColorChangeWithError("year", "text-smokey-grey", "text-light-red");
+        inputElementColorChangeWithError("year", "border-smokey-grey", "border-light-red");
         hasError = true;
     }
+
+    if (hasError)
+        return;
 
     // check range of the input values
     if (!hasError) {
         if (currentDay < 1 || currentDay > 31) {
             dayError.textContent = "Must be a valid day";
+            labelColorChangeWithError("day", "text-smokey-grey", "text-light-red");
+            inputElementColorChangeWithError("day", "border-smokey-grey", "border-light-red");
             hasError = true;
         }
         if (currentMonth < 0 || currentMonth > 11) {
             monthError.textContent = "Must be a valid month";
+            labelColorChangeWithError("month", "text-smokey-grey", "text-light-red");
+            inputElementColorChangeWithError("month", "border-smokey-grey", "border-light-red");
             hasError = true;
         }
         if (currentYear < 1900 || currentYear > new Date().getFullYear()) {
             yearError.textContent = "Must be a valid year";
+            labelColorChangeWithError("year", "text-smokey-grey", "text-light-red");
+            inputElementColorChangeWithError("year", "border-smokey-grey", "border-light-red");
             hasError = true;
         }
     }
@@ -94,12 +105,14 @@ document.querySelector(".btn").addEventListener("click", function () {
         birthDate.getMonth() !== currentMonth ||
         birthDate.getDate() !== currentDay
     ) {
-        dayError.textContent = "Invalid date";
+        monthError.textContent = "Invalid date";
         hasError = true;
     }
 
     if (birthDate > new Date()) {
         yearError.textContent = "Must be in the past";
+        labelColorChangeWithError("year", "text-smokey-grey", "text-light-red");
+        inputElementColorChangeWithError("year", "border-smokey-grey", "border-light-red");
         hasError = true;
     }
 
@@ -133,6 +146,16 @@ document.querySelector(".btn").addEventListener("click", function () {
 
     result.forEach((item, index) => {
         item.textContent = values[index];
+
+        // change element color to default
+        labelColorChangeWithError("day", "text-light-red", "text-smokey-grey");
+        inputElementColorChangeWithError("day", "border-light-red", "text-smokey-grey",);
+
+        labelColorChangeWithError("month", "text-light-red", "text-smokey-grey");
+        inputElementColorChangeWithError("month", "border-light-red", "text-smokey-grey");
+
+        labelColorChangeWithError("year", "text-light-red", "text-smokey-grey");
+        inputElementColorChangeWithError("year", "border-light-red", "text-smokey-grey");
     });
     
     console.log("Age: " + ageYears + " years, " + ageMonths + " months, " + ageDays + " days");
