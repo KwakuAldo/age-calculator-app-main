@@ -30,7 +30,7 @@ document.querySelector(".btn").addEventListener("click", function () {
         }
 
         if (input) {
-            input.classList.remove("border-smokey-grey");
+            input.classList.remove("border-light-gray");
             input.classList.add("border-light-red");
         }
     }
@@ -47,7 +47,7 @@ document.querySelector(".btn").addEventListener("click", function () {
 
         if (input) {
             input.classList.remove("border-light-red");
-            input.classList.add("border-smokey-grey");
+            input.classList.add("border-light-gray");
         }
     }
 

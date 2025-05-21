@@ -22,6 +22,7 @@
     --font-poppins: 'Poppins', sans-serif;
     --color-purple1: hsl(259, 100%, 65%);
     --color-light-red: hsl(0, 100%, 67%);
+    --color-white1: hsl(0, 0%, 100%);
     --color-off-white: hsl(0, 0%, 94%);
     --color-light-gray: hsl(0, 0%, 86%);
     --color-smokey-grey: hsl(0, 1%, 44%);
@@ -278,6 +279,9 @@
     border-style: var(--tw-border-style);
     border-width: 1px;
   }
+  .border-light-gray {
+    border-color: var(--color-light-gray);
+  }
   .border-light-red {
     border-color: var(--color-light-red);
   }
@@ -295,6 +299,12 @@
   }
   .bg-purple1 {
     background-color: var(--color-purple1);
+  }
+  .bg-smokey-grey {
+    background-color: var(--color-smokey-grey);
+  }
+  .bg-white1 {
+    background-color: var(--color-white1);
   }
   .p-4 {
     padding: calc(var(--spacing) * 4);
