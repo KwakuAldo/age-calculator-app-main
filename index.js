@@ -1,8 +1,3 @@
-// let currentDay = document.querySelector("#day").innerText;
-// let currentMonth = document.querySelector("#month").innerText;
-// let currentYear = document.querySelector("#year").innerText;
-
-
 document.querySelector(".btn").addEventListener("click", function () {
     //This changes the color of the button on click
     this.classList.remove("bg-purple1");
@@ -24,24 +19,36 @@ document.querySelector(".btn").addEventListener("click", function () {
     const monthError = document.getElementById("month-error");
     const yearError = document.getElementById("error-year");
 
-    // label text color change on error
-    function labelColorChangeWithError(inputId, removeClass, addClass) {
-        const label = document.querySelector(`label[for="${inputId}"]`);
-        if (!label)
-            return;
+    // label text and input border color change on error
+    function applyErrorStyle(id) {
+        const label = document.querySelector(`label[for="${id}"]`);
+        const input = document.querySelector(`#${id}`);
 
-        label.classList.remove(removeClass);
-        label.classList.add(addClass);
+        if (label) {
+            label.classList.remove("text-smokey-grey");
+            label.classList.add("text-light-red");
+        }
+
+        if (input) {
+            input.classList.remove("border-smokey-grey");
+            input.classList.add("border-light-red");
+        }
     }
 
-    // input element color change to alert error
-    function inputElementColorChangeWithError(inputId, removeClass, addClass) {
-        const input = document.querySelector(`#${inputId}`);
-        if (!input)
-            return;
+    // reset label text and input border color to default on success
+    function resetStyle(id) {
+        const label = document.querySelector(`label[for="${id}"]`);
+        const input = document.querySelector(`#${id}`);
 
-        input.classList.remove(removeClass);
-        input.classList.add(addClass);
+        if (label) {
+            label.classList.remove("text-light-red");
+            label.classList.add("text-smokey-grey");
+        }
+
+        if (input) {
+            input.classList.remove("border-light-red");
+            input.classList.add("border-smokey-grey");
+        }
     }
 
     // CLear previous error messages
@@ -53,23 +60,20 @@ document.querySelector(".btn").addEventListener("click", function () {
     let hasError = false;
 
     // check if the input fields are empty
-    if (!dayInput.value) {
+    if (!dayInput.value.trim()) {
         dayError.textContent = "This field is required";
-        labelColorChangeWithError("day", "text-smokey-grey", "text-light-red");
-        inputElementColorChangeWithError("day", "border-smokey-grey", "border-light-red");
+        applyErrorStyle("day");
         hasError = true;
     }
 
-    if (!monthInput.value) {
+    if (!monthInput.value.trim()) {
         monthError.textContent = "This field is required";
-        labelColorChangeWithError("month", "text-smokey-grey", "text-light-red");
-        inputElementColorChangeWithError("month", "border-smokey-grey", "border-light-red");
+        applyErrorStyle("month");
         hasError = true;
     }
-    if (!yearInput.value) {
+    if (!yearInput.value.trim()) {
         yearError.textContent = "This field is required";
-        labelColorChangeWithError("year", "text-smokey-grey", "text-light-red");
-        inputElementColorChangeWithError("year", "border-smokey-grey", "border-light-red");
+        applyErrorStyle("year");
         hasError = true;
     }
 
@@ -80,21 +84,17 @@ document.querySelector(".btn").addEventListener("click", function () {
     if (!hasError) {
         if (currentDay < 1 || currentDay > 31) {
             dayError.textContent = "Must be a valid day";
-            labelColorChangeWithError("day", "text-smokey-grey", "text-light-red");
-            inputElementColorChangeWithError("day", "border-smokey-grey", "border-light-red");
+            applyErrorStyle("day");
             hasError = true;
         }
         if (currentMonth < 0 || currentMonth > 11) {
             monthError.textContent = "Must be a valid month";
-            labelColorChangeWithError("month", "text-smokey-grey", "text-light-red");
-            inputElementColorChangeWithError("month", "border-smokey-grey", "border-light-red");
+            applyErrorStyle("month");
             hasError = true;
         }
-        if (currentYear < 1900 || currentYear > new Date().getFullYear()) {
+        if (currentYear < 1500 || currentYear > new Date().getFullYear()) {
             yearError.textContent = "Must be a valid year";
-            labelColorChangeWithError("year", "text-smokey-grey", "text-light-red");
-            inputElementColorChangeWithError("year", "border-smokey-grey", "border-light-red");
-            hasError = true;
+            applyErrorStyle("year");
         }
     }
 
@@ -105,21 +105,21 @@ document.querySelector(".btn").addEventListener("click", function () {
         birthDate.getMonth() !== currentMonth ||
         birthDate.getDate() !== currentDay
     ) {
-        monthError.textContent = "Invalid date";
+        monthError.textContent = "Invalid month";
+        applyErrorStyle("month");
         hasError = true;
     }
 
     if (birthDate > new Date()) {
         yearError.textContent = "Must be in the past";
-        labelColorChangeWithError("year", "text-smokey-grey", "text-light-red");
-        inputElementColorChangeWithError("year", "border-smokey-grey", "border-light-red");
+        applyErrorStyle("year");
         hasError = true;
     }
 
     if (hasError)
         return;
     
-    let today = new Date();
+    const today = new Date();
 
     // Calculate age
     let ageYears = today.getFullYear() - birthDate.getFullYear();
@@ -144,25 +144,25 @@ document.querySelector(".btn").addEventListener("click", function () {
     let values = [ageYears, ageMonths, ageDays];
     let result = document.querySelectorAll(".result");
 
-    result.forEach((item, index) => {
-        item.textContent = values[index];
-
-        // change element color to default
-        labelColorChangeWithError("day", "text-light-red", "text-smokey-grey");
-        inputElementColorChangeWithError("day", "border-light-red", "text-smokey-grey",);
-
-        labelColorChangeWithError("month", "text-light-red", "text-smokey-grey");
-        inputElementColorChangeWithError("month", "border-light-red", "text-smokey-grey");
-
-        labelColorChangeWithError("year", "text-light-red", "text-smokey-grey");
-        inputElementColorChangeWithError("year", "border-light-red", "text-smokey-grey");
+    // Loop through the result elements and update their text content
+    result.forEach((element, index) => {
+        element.textContent = values[index];
+    });
+    // Reset the button color
+    this.classList.remove("bg-off-black");
+    this.classList.add("bg-purple1");
+    // Reset the input fields
+    dayInput.value = "";
+    monthInput.value = "";
+    yearInput.value = "";
+    // Reset the label text and input border color
+    ["day", "month", "year"].forEach(resetStyle);
     });
 
-
-    // Code to check if we were getting the values from the input fields
-    // currentDay = document.querySelector("#day").value;
-    // currentMonth = document.querySelector("#month").value;
-    // currentYear = document.querySelector("#year").value;
-    
-    // console.log(currentDay + " " + currentMonth + " " + currentYear);
+// This code is to check if the enter key is pressed
+// and trigger the button click event
+document.addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+        document.querySelector(".btn").click();
+    }
 })
