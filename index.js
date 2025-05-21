@@ -157,23 +157,6 @@ document.querySelector(".btn").addEventListener("click", function () {
         labelColorChangeWithError("year", "text-light-red", "text-smokey-grey");
         inputElementColorChangeWithError("year", "border-light-red", "text-smokey-grey");
     });
-    
-    console.log("Age: " + ageYears + " years, " + ageMonths + " months, " + ageDays + " days");
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     // Code to check if we were getting the values from the input fields
