@@ -1,4 +1,4 @@
-/*! tailwindcss v4.1.7 | MIT License | https://tailwindcss.com */
+/*! tailwindcss v4.2.1 | MIT License | https://tailwindcss.com */
 @layer properties;
 @layer theme, base, components, utilities;
 @layer theme {
@@ -161,6 +161,9 @@
   ::-webkit-datetime-edit, ::-webkit-datetime-edit-year-field, ::-webkit-datetime-edit-month-field, ::-webkit-datetime-edit-day-field, ::-webkit-datetime-edit-hour-field, ::-webkit-datetime-edit-minute-field, ::-webkit-datetime-edit-second-field, ::-webkit-datetime-edit-millisecond-field, ::-webkit-datetime-edit-meridiem-field {
     padding-block: 0;
   }
+  ::-webkit-calendar-picker-indicator {
+    line-height: 1;
+  }
   :-moz-ui-invalid {
     box-shadow: none;
   }
@@ -184,8 +187,11 @@
   .static {
     position: static;
   }
+  .start {
+    inset-inline-start: var(--spacing);
+  }
   .top-1\/2 {
-    top: calc(1/2 * 100%);
+    top: calc(1 / 2 * 100%);
   }
   .left-0 {
     left: calc(var(--spacing) * 0);
@@ -248,7 +254,7 @@
     width: 100%;
   }
   .-translate-y-1\/2 {
-    --tw-translate-y: calc(calc(1/2 * 100%) * -1);
+    --tw-translate-y: calc(calc(1 / 2 * 100%) * -1);
     translate: var(--tw-translate-x) var(--tw-translate-y);
   }
   .cursor-pointer {
@@ -285,23 +291,14 @@
   .border-light-red {
     border-color: var(--color-light-red);
   }
-  .border-smokey-grey {
-    border-color: var(--color-smokey-grey);
-  }
   .bg-light-gray {
     background-color: var(--color-light-gray);
   }
   .bg-off-black {
     background-color: var(--color-off-black);
   }
-  .bg-off-white {
-    background-color: var(--color-off-white);
-  }
   .bg-purple1 {
     background-color: var(--color-purple1);
-  }
-  .bg-smokey-grey {
-    background-color: var(--color-smokey-grey);
   }
   .bg-white1 {
     background-color: var(--color-white1);
