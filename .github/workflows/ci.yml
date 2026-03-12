@@ -2,7 +2,7 @@ name: Age Calculator CI Pipeline
 
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
     tags:
       - 'v*'
 
@@ -30,7 +30,7 @@ jobs:
           images: ${{ secrets.DOCKER_USERNAME }}/age-calculator-app
           tags: |
             type=raw,value=latest,enable={{is_default_branch}}
-            type=sha,prefix=main-
+            type=sha,prefix=master-
             type=ref,event=tag
 
       - name: Build and push Docker image
