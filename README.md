@@ -64,8 +64,8 @@ This makes every push to the repository automatically produce a deployable conta
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://github.com/KwakuAldo/age-calculator-app-main/tree/master/design)
-- Live Site URL: [Add live site URL here](https://agecalcuapp.netlify.app/)
+- Solution URL: [GitHub Repository](https://github.com/KwakuAldo/age-calculator-app-main/tree/master/design)
+- Live Site URL: [Live Site URL](https://agecalcuapp.netlify.app/)
 
 ## My process
 
